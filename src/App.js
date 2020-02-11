@@ -8,7 +8,7 @@ const App = () => {
     return (
         <Style.AppWrapper>
             <BrowserRouter>
-                <Route exact path="/:page" component={Homepage}/>
+                <Route exact path="/" component={Homepage}/>
             </BrowserRouter>
         </Style.AppWrapper>
     );
