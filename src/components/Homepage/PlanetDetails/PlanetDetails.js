@@ -13,11 +13,8 @@ const PlanetDetails = (props) => {
     });
 
     return (
-        <div className="asd">
-            {console.log('data', data)}
+        <div>
             <h1>Planet Details</h1>
-            <p>asdasd</p>
-            <p>asdasd</p>
         </div>
     );
 };

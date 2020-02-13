@@ -72,7 +72,6 @@ const PlanetList = () => {
 
     return (
         <div>
-            {console.log('data', data)}
             <div style={{display: 'flex', flexWrap: 'wrap'}}>
                 {data?.allPlanets.edges.map(edge => {
                     return (
