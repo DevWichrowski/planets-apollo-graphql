@@ -4,6 +4,7 @@ import {GET_ALL_PLANETS} from "../../../core/graphql/queries/planets.query";
 import Planet from "./Planet/Planet";
 import Pagination from "../../shared/Pagination/Pagination";
 import {useHistory} from 'react-router-dom';
+import {getPages} from "../../../utils/helpers/get-pages";
 
 const PlanetList = () => {
     const history = useHistory();
@@ -26,6 +27,7 @@ const PlanetList = () => {
             variables: {
                 after: data?.allPlanets.pageInfo.endCursor,
                 first: 10,
+                last: null,
             },
             updateQuery: (previousResult, {fetchMoreResult}) => {
                 const newEdges = fetchMoreResult.allPlanets.edges;
@@ -48,6 +50,7 @@ const PlanetList = () => {
             variables: {
                 last: 10,
                 before: data?.allPlanets.pageInfo.startCursor,
+                first: null,
             },
             updateQuery: (previousResult, {fetchMoreResult}) => {
                 const newEdges = fetchMoreResult.allPlanets.edges;
