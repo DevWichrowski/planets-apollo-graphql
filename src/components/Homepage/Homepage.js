@@ -4,7 +4,7 @@ import PlanetList from "./PlanetList/PlanetList";
 
 const Homepage = () => {
     return (
-        <div>
+        <div style={{height: '100%'}}>
             <PlanetList/>
         </div>
     );

@@ -3,6 +3,8 @@ import * as Style from "./App.styles";
 import Homepage from "./components/Homepage/Homepage";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import PlanetDetails from "./components/Homepage/PlanetDetails/PlanetDetails";
+import HomepageView from "./views/HomepageView/HomepageView";
+import PlanetDetailsView from "./views/PlanetDetailsView/PlanetDetailsView";
 
 
 const App = () => {
@@ -11,10 +13,10 @@ const App = () => {
             <BrowserRouter>
                 <Switch>
                     <Route path="/planet/:id">
-                        <PlanetDetails/>
+                        <PlanetDetailsView/>
                     </Route>
                     <Route exact path="/">
-                        <Homepage/>
+                        <HomepageView/>
                     </Route>
                 </Switch>
             </BrowserRouter>
