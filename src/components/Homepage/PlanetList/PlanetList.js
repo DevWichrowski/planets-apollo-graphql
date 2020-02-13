@@ -5,6 +5,7 @@ import Planet from "./Planet/Planet";
 import Pagination from "../../shared/Pagination/Pagination";
 import {useHistory} from 'react-router-dom';
 import {getPages} from "../../../utils/helpers/get-pages";
+import * as Style from "./PlanetList.style";
 
 const PlanetList = () => {
     const history = useHistory();
@@ -71,15 +72,15 @@ const PlanetList = () => {
     };
 
     return (
-        <div>
-            <div style={{display: 'flex', flexWrap: 'wrap'}}>
+        <div style={{position: 'relative', height: '100%'}}>
+            <Style.Wrapper>
                 {data?.allPlanets.edges.map(edge => {
                     return (
                         <Planet key={edge.planet.id} data={edge.planet}
                                 navigateTo={() => navigateToPlanet(edge.planet.id)}/>
                     )
                 })}
-            </div>
+            </Style.Wrapper>
             <Pagination data={data} page={page} nextPage={nextPage} prevPage={prevPage}/>
         </div>
     );

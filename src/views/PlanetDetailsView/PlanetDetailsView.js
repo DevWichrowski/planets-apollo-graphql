@@ -8,7 +8,7 @@ const PlanetDetailsView = () => {
         <>
             <Header textHeader={'Planet details'} homeButton={true}/>
             <PlanetDetails/>
-            <Footer/>
+            {/*<Footer/>*/}
         </>
     );
 };

@@ -5,6 +5,8 @@ import {getPages} from "../../../utils/helpers/get-pages";
 const Pagination = ({data, loading, page, nextPage, prevPage}) => {
     return (
         <Style.Wrapper>
+            {console.log(page)}
+            {page === 1 && <Style.Placeholder/>}
             {page > 1 && <Style.Button onClick={prevPage}>Previous page</Style.Button>}
             <Style.PageNumber>{page}</Style.PageNumber>
             {page < getPages(data?.allPlanets.totalCount) &&

@@ -10,7 +10,7 @@ const HomepageView = () => {
         <>
             <Header/>
             <Homepage/>
-            <Footer/>
+            {/*<Footer/>*/}
         </>
     );
 };
