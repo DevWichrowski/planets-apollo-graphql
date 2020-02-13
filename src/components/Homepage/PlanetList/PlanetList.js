@@ -24,7 +24,7 @@ const PlanetList = () => {
     const nextPage = () => {
         fetchMore({
             variables: {
-                after: data.allPlanets.pageInfo.endCursor,
+                after: data?.allPlanets.pageInfo.endCursor,
                 first: 10,
             },
             updateQuery: (previousResult, {fetchMoreResult}) => {
@@ -47,7 +47,7 @@ const PlanetList = () => {
         fetchMore({
             variables: {
                 last: 10,
-                before: data.allPlanets.pageInfo.startCursor,
+                before: data?.allPlanets.pageInfo.startCursor,
             },
             updateQuery: (previousResult, {fetchMoreResult}) => {
                 const newEdges = fetchMoreResult.allPlanets.edges;
@@ -69,15 +69,16 @@ const PlanetList = () => {
 
     return (
         <div>
-            {/*{console.log('data', data)}*/}
-            <h1>Planet Lists</h1>
+            {console.log('data', data)}
+            <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                {data?.allPlanets.edges.map(edge => {
+                    return (
+                        <Planet key={edge.planet.id} data={edge.planet}
+                                navigateTo={() => navigateToPlanet(edge.planet.id)}/>
+                    )
+                })}
+            </div>
             <Pagination data={data} page={page} nextPage={nextPage} prevPage={prevPage}/>
-            {data?.allPlanets.edges.map(edge => {
-                return (
-                    <Planet key={edge.planet.id} data={edge.planet}
-                            navigateTo={() => navigateToPlanet(edge.planet.id)}/>
-                )
-            })}
         </div>
     );
 };
