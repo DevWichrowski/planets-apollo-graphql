@@ -1,5 +1,6 @@
 import React from 'react';
 import * as Style from "./Planet.style";
+import Header from "../../../shared/Header/Header";
 
 // const style = {
 //     border: '1px solid black',
@@ -13,9 +14,10 @@ const Planet = props => {
 
     return (
         <Style.Wrapper onClick={props.navigateTo}>
-            <h1>Name: {name}</h1>
-            <h2>Climates: {climates.map(climate => climate)}</h2>
-            <h2>Population: {population}</h2>
+            <Header textHeader={name}/>
+            {/*<h1>Name: {name}</h1>*/}
+            <p>Climates: {climates.map(climate => climate)}</p>
+            <p>Population: {population}</p>
             <p>Gravity: {gravity}</p>
         </Style.Wrapper>
     );

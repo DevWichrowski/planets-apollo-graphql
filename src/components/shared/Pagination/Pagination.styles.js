@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
+margin-bottom: 20px;
 `;
 
 export const Button = styled.button`
@@ -21,6 +22,7 @@ export const Button = styled.button`
   padding: 0 15px;
   height: 30px;
   transition: all 0.5s;
+  cursor: pointer;
 `;
 
 export const PageNumber = styled.p`

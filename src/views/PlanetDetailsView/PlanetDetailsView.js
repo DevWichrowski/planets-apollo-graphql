@@ -6,7 +6,7 @@ import Footer from "../../components/shared/Footer/Footer";
 const PlanetDetailsView = () => {
     return (
         <>
-            <Header textHeader={'Planet details'}/>
+            <Header textHeader={'Planet details'} homeButton={true}/>
             <PlanetDetails/>
             <Footer/>
         </>
