@@ -1,2 +1,2 @@
-export const darkGray = "#282c34";
-export const white = "#f6f7fa";
+export const darkGrayColor = "#282c34";
+export const whiteColor = "#f6f7fa";

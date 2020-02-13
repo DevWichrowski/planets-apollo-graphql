@@ -1,12 +1,15 @@
 import React from 'react';
 import PlanetList from "./PlanetList/PlanetList";
+import Header from "../shared/Header/Header";
+import Footer from "../shared/Footer/Footer";
 
 
 const Homepage = () => {
     return (
         <div>
-            <h1>Planet SWAPI</h1>
+            <Header/>
             <PlanetList/>
+            <Footer/>
         </div>
     );
 };
