@@ -1,20 +1,11 @@
 import React from 'react';
-import {useQuery} from "@apollo/react-hooks";
-import {GET_ALL_PLANETS} from "../../../../core/graphql/queries/planets.query";
 
-const Pagination = ({data, nextPage, prevPage}) => {
-    useQuery(GET_ALL_PLANETS, {
-        variables: {
-            after: data.allPlanets.pageInfo.endCursor
-        },
-        onCompleted: (resp) => data = resp
-    });
-
+const Pagination = ({loading, page, nextPage, prevPage, hasNextPage}) => {
     return (
         <div>
-            <button onClick={prevPage}>{'<='}</button>
-            <h2>2</h2>
-            <button onClick={nextPage}>{'=>'}</button>
+            {true ? <button onClick={prevPage}>{'<='}</button> : null}
+            <h2>{page}</h2>
+            {true ? <button onClick={nextPage}>{'=>'}</button> : null}
         </div>
     );
 };
