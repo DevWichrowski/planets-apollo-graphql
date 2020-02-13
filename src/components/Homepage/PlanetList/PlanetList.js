@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useQuery} from "@apollo/react-hooks";
 import {GET_ALL_PLANETS} from "../../../core/graphql/queries/planets.query";
 import Planet from "./Planet/Planet";
-import Pagination from "./Pagination/Pagination";
+import Pagination from "../../shared/Pagination/Pagination";
 import {useHistory} from 'react-router-dom';
 
 const PlanetList = () => {
@@ -69,15 +69,15 @@ const PlanetList = () => {
 
     return (
         <div>
-            {console.log('data', data)}
+            {/*{console.log('data', data)}*/}
             <h1>Planet Lists</h1>
+            <Pagination data={data} page={page} nextPage={nextPage} prevPage={prevPage}/>
             {data?.allPlanets.edges.map(edge => {
                 return (
                     <Planet key={edge.planet.id} data={edge.planet}
                             navigateTo={() => navigateToPlanet(edge.planet.id)}/>
                 )
             })}
-            <Pagination data={data} page={page} nextPage={nextPage} prevPage={prevPage}/>
         </div>
     );
 };

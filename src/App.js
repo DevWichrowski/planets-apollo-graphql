@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Style from "./App.style";
+import * as Style from "./App.styles";
 import Homepage from "./components/Homepage/Homepage";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import PlanetDetails from "./components/Homepage/PlanetDetails/PlanetDetails";
