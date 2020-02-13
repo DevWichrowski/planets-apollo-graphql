@@ -8,10 +8,10 @@ const style = {
 };
 
 const Planet = props => {
-    const {name, climates, population, gravity} = props.data;
+    const {name, climates, population, gravity, navigateTo} = props.data;
 
     return (
-        <div style={style}>
+        <div style={style} onClick={props.navigateTo}>
             <h1>Name: {name}</h1>
             <h2>Climates: {climates.map(climate => climate)}</h2>
             <h2>Population: {population}</h2>

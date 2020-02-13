@@ -1,8 +1,8 @@
 import {gql} from "apollo-boost";
 
 export const GET_PLANET_DETAILS = gql`
-query planetDetails($id: String!) {
-   planet(id: $id"){
+query planetDetails($id: ID) {
+   planet(id: $id){
     name
     diameter
     rotationPeriod
