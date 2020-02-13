@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Pagination = ({loading, page, nextPage, prevPage, hasNextPage}) => {
+const Pagination = ({data, loading, page, nextPage, prevPage}) => {
     return (
         <div>
-            {true ? <button onClick={prevPage}>{'<='}</button> : null}
+            {page > 1 && <button onClick={prevPage}>{'<='}</button>}
             <h2>{page}</h2>
-            {true ? <button onClick={nextPage}>{'=>'}</button> : null}
+            {data?.allPlanets.pageInfo.hasNextPage && <button onClick={nextPage}>{'=>'}</button>}
         </div>
     );
 };

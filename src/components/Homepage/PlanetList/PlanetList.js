@@ -6,7 +6,6 @@ import Pagination from "./Pagination/Pagination";
 
 const PlanetList = () => {
     const [page, setPage] = useState(1);
-    const [hasNextPage, setHasNextPage] = useState(false);
 
     const {data, loading, error, fetchMore} = useQuery(GET_ALL_PLANETS, {
         variables: {
@@ -41,12 +40,11 @@ const PlanetList = () => {
     const prevPage = () => {
         fetchMore({
             variables: {
+                first: null,
                 last: 10,
                 before: data.allPlanets.pageInfo.startCursor,
             },
             updateQuery: (previousResult, {fetchMoreResult}) => {
-                console.log('fetchMoreResult', fetchMoreResult);
-                console.log('previousResult', previousResult);
                 const newEdges = fetchMoreResult.allPlanets.edges;
                 const pageInfo = fetchMoreResult.allPlanets.pageInfo;
 
@@ -67,16 +65,12 @@ const PlanetList = () => {
     return (
         <div>
             <h1>Planet Lists</h1>
-            <Pagination data={data} page={page} nextPage={nextPage} prevPage={prevPage} hasNextPage={hasNextPage}
-                        loading={loading}/>
-            {data &&
-            data.allPlanets &&
-            data.allPlanets.edges &&
-            data.allPlanets.edges.map(edge => {
+            {data?.allPlanets.edges.map(edge => {
                 return (
                     <Planet key={edge.planet.id} data={edge.planet}/>
                 )
             })}
+            <Pagination data={data} page={page} nextPage={nextPage} prevPage={prevPage}/>
         </div>
     );
 };
