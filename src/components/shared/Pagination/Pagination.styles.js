@@ -23,6 +23,7 @@ export const Button = styled.button`
   height: 30px;
   transition: all 0.5s;
   cursor: pointer;
+  min-width: 115px;
 `;
 
 export const PageNumber = styled.p`
