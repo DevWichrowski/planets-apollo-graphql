@@ -16,7 +16,7 @@ const App = () => {
                         <PlanetDetailsView/>
                     </Route>
                     <Route exact path="/">
-                        <Homepage/>
+                        <HomepageView/>
                     </Route>
                 </Switch>
             </BrowserRouter>
