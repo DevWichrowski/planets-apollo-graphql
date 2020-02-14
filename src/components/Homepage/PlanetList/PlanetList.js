@@ -1,26 +1,40 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useQuery} from "@apollo/react-hooks";
 import {GET_ALL_PLANETS} from "../../../core/graphql/queries/planets.query";
 import Planet from "./Planet/Planet";
 import Pagination from "../../shared/Pagination/Pagination";
 import {useHistory} from 'react-router-dom';
-import {getPages} from "../../../utils/helpers/get-pages";
 import * as Style from "./PlanetList.style";
 
 const PlanetList = () => {
     const history = useHistory();
 
     const [page, setPage] = useState(1);
+    const [hasNextPage, setHasNextPage] = useState(false);
 
-    const {data, loading, error, fetchMore} = useQuery(GET_ALL_PLANETS, {
+    const {data, loading, fetchMore} = useQuery(GET_ALL_PLANETS, {
         variables: {
             first: 10,
         },
         notifyOnNetworkStatusChange: true
     });
 
+    useEffect(() => {
+        if (data) {
+            setHasNextPage(data?.allPlanets?.pageInfo.hasNextPage)
+        }
+
+    }, [data]);
+
     const navigateToPlanet = id => {
         history.push(`/planet/${id}`)
+    };
+
+    const handleNextPage = () => setPage(page + 1);
+
+    const handlePreviousPage = () => {
+        setPage(page - 1);
+        setHasNextPage(true);
     };
 
     const nextPage = () => {
@@ -43,7 +57,7 @@ const PlanetList = () => {
                     }
                     : previousResult;
             },
-        }).then(() => setPage(page + 1))
+        }).then(() => handleNextPage())
     };
 
     const prevPage = () => {
@@ -66,9 +80,8 @@ const PlanetList = () => {
                         }
                     }
                     : previousResult;
-            }
-        }).then(() => setPage(page - 1)
-        )
+            },
+        }).then(() => handlePreviousPage())
     };
 
     return (
@@ -81,7 +94,8 @@ const PlanetList = () => {
                     )
                 })}
             </Style.Wrapper>
-            <Pagination data={data} page={page} nextPage={nextPage} prevPage={prevPage}/>
+            <Pagination loading={loading} hasNextPage={hasNextPage} page={page} nextPage={nextPage}
+                        prevPage={prevPage}/>
         </div>
     );
 };

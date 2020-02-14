@@ -1,16 +1,15 @@
 import React from 'react';
 import * as Style from "./Pagination.styles";
-import {getPages} from "../../../utils/helpers/get-pages";
 
-const Pagination = ({data, loading, page, nextPage, prevPage}) => {
+
+const Pagination = ({hasNextPage, loading, page, nextPage, prevPage}) => {
     return (
         <Style.Wrapper>
-            {console.log(page)}
             {page === 1 && <Style.Placeholder/>}
             {page > 1 && <Style.Button onClick={prevPage}>Previous page</Style.Button>}
             <Style.PageNumber>{page}</Style.PageNumber>
-            {page < getPages(data?.allPlanets.totalCount) &&
-            <Style.Button next onClick={nextPage}>Next page</Style.Button>}
+            {(hasNextPage || loading) ?
+                <Style.Button next onClick={nextPage}>Next page</Style.Button> : <Style.Placeholder/>}
         </Style.Wrapper>
     );
 };
