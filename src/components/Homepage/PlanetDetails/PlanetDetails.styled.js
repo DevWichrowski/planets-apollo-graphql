@@ -8,6 +8,12 @@ export const Wrapper = styled.div`
   align-items: center;
     `;
 
+export const InfoElement = styled.div`
+display: flex;
+flex-direction: column;
+padding: 15px 0;
+`;
+
 export const Container = styled.div`
   width: 60%;
   padding: 10px 0;
@@ -33,23 +39,6 @@ grid-template-rows: repeat(2, minmax(40px, 80px));
 grid-column-gap: 2%;
 justify-content: flex-start;
 color: rgba(255, 255, 255, 0.6);
-`;
-
-export const InfoElement = styled.div`
-display: flex;
-flex-direction: column;
-padding: 15px 0;
-`;
-
-export const InfoHeader = styled.div`
-font-weight: bold;
-margin-bottom: 5px;
-font-size: 16px;
-color: rgba(255, 255, 255, 0.8);
-`;
-
-export const InfoData = styled.div`
-white-space: normal;
 `;
 
 export const MovieContainer = styled.div`
