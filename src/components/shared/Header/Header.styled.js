@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
 display: grid;
-grid-template-columns: 20% 60% 20%;
+grid-template-columns: 5% 90% 5%;
 padding: 5px 0;
 background-color:#2a2b2b;
 position: relative;

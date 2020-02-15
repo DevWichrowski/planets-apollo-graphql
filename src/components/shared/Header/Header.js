@@ -18,6 +18,10 @@ const Header = ({textHeader, homeButton}) => {
     };
 
     useEffect(() => {
+        setWidth(window.innerWidth);
+    }, []);
+
+    useEffect(() => {
         window.addEventListener('resize', updateWindowWidth);
     }, [window]);
 
