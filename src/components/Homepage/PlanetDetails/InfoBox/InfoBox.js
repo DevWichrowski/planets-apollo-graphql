@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from "./InfoBox.styled";
-import Skeleton from "react-loading-skeleton/lib";
 import PropTypes from 'prop-types';
+import {guardSkeleton} from "../../../../utils/helpers/guard-skeletion";
 
 
 const InfoBox = ({headerText, value}) => {
@@ -11,7 +11,7 @@ const InfoBox = ({headerText, value}) => {
                 {headerText}
             </S.InfoHeader>
             <S.InfoData>
-                {value ?? <Skeleton/>}
+                {guardSkeleton(value)}
             </S.InfoData>
         </S.InfoElement>
     );

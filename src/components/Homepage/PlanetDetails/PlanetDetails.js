@@ -18,25 +18,25 @@ const PlanetDetails = (props) => {
 
     return (
         <>
-            {data != null && <S.Wrapper>
+            <S.Wrapper>
                 <S.Container>
                     <Header textHeader="Basic info"/>
                     <S.InfoContainer>
-                        <InfoBox headerText={"Name:"} value={data.planet.name}/>
-                        <InfoBox headerText={"Diameter:"} value={data.planet.diameter}/>
-                        <InfoBox headerText={"Rotation period:"} value={data.planet.rotationPeriod}/>
-                        <InfoBox headerText={"Gravity:"} value={data.planet.gravity}/>
-                        <InfoBox headerText={"Population:"} value={data.planet.population}/>
-                        <InfoBox headerText={"Terrains:"} value={data.planet.terrains.map(terrain => <React.Fragment
+                        <InfoBox headerText={"Name:"} value={data?.planet.name}/>
+                        <InfoBox headerText={"Diameter:"} value={data?.planet.diameter}/>
+                        <InfoBox headerText={"Rotation period:"} value={data?.planet.rotationPeriod}/>
+                        <InfoBox headerText={"Gravity:"} value={data?.planet.gravity}/>
+                        <InfoBox headerText={"Population:"} value={data?.planet.population}/>
+                        <InfoBox headerText={"Terrains:"} value={data?.planet.terrains.map(terrain => <React.Fragment
                             key={terrain}>{`${terrain}, `}</React.Fragment>)}/>
-                        <InfoBox headerText={"Surface water:"} value={data.planet.surfaceWater}/>
-                        <InfoBox headerText={"Gravity:"} value={data.planet.gravity}/>
+                        <InfoBox headerText={"Surface water:"} value={data?.planet.surfaceWater}/>
+                        <InfoBox headerText={"Gravity:"} value={data?.planet.gravity}/>
                     </S.InfoContainer>
                 </S.Container>
                 <S.Container>
                     <Header textHeader="Movies"/>
                     <S.MovieContainer>
-                        {data.planet.filmConnection.films.map(film => {
+                        {data?.planet.filmConnection.films.map(film => {
                             return (
                                 <React.Fragment key={film.id}>
                                     <S.InfoElement>
