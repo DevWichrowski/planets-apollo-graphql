@@ -12,11 +12,10 @@ import SkeletonLoading from "../../shared/SkeletonLoading/SkeletonLoading";
 const PlanetDetails = (props) => {
     useDocumentTitle('Planets Details');
     let {id} = useParams();
-    const {data, loading, error, fetchMore} = useQuery(GET_PLANET_DETAILS, {
+    const {data} = useQuery(GET_PLANET_DETAILS, {
         variables: {
             id: id,
         },
-        notifyOnNetworkStatusChange: true
     });
 
     return (
@@ -41,7 +40,8 @@ const PlanetDetails = (props) => {
                     <Header textHeader="Movies"/>
                     <S.MovieContainer>
                         {data ? data.planet.filmConnection.films.length === 0 ?
-                            <h1>No movies connected to planet.</h1> : data.planet.filmConnection.films.map(film => {
+                            <S.NoMovies>No movies connected to
+                                planet.</S.NoMovies> : data.planet.filmConnection.films.map(film => {
                                 return (
                                     <React.Fragment key={film.id}>
                                         <S.InfoElement>

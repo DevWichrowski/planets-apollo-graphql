@@ -108,3 +108,7 @@ export const Divider = styled.hr`
     background-image: linear-gradient(to right, rgba(224,160,16,0), rgba(224,160,16,0.75), rgba(224,160,16,0));
 `;
 
+export const NoMovies = styled.h1`{
+text-align: center;
+width: 100%;
+}`
