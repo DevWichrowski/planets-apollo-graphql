@@ -4,7 +4,7 @@ import {useQuery} from "@apollo/react-hooks";
 import {GET_PLANET_DETAILS} from "../../../core/graphql/queries/planet-details.query";
 import * as S from "./PlanetDetails.styled";
 import Header from "../../shared/Header/Header";
-import InfoBox from "./InfoBox/InfoBox";
+import InfoBox from "../../shared/InfoBox/InfoBox";
 
 
 const PlanetDetails = (props) => {
