@@ -5,10 +5,10 @@ export const Wrapper = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
-height: 10%;
+height: 5%;
 width: 100%;
 padding: 15px;
-background-color: #80858e;
+background-color: #2a2b2b;
 `;
 
 export const Placeholder = styled.button`
@@ -37,8 +37,8 @@ align-items: center;
 font-weight: bold;
 margin: 0 10px;
 height: 30px;
+color: rgba(224,160,16,0.75);
 width: 30px;
 border-radius: 50%;
-background-color: rgba(235,235,235,0.48);
-font-size: 0.7vw;
+font-size: 16px;
 `;

@@ -5,9 +5,12 @@ import {GET_PLANET_DETAILS} from "../../../core/graphql/queries/planet-details.q
 import * as S from "./PlanetDetails.styled";
 import Header from "../../shared/Header/Header";
 import InfoBox from "../../shared/InfoBox/InfoBox";
+import {useDocumentTitle} from "../../../utils/helpers/hooks";
+import SkeletonLoading from "../../shared/SkeletonLoading/SkeletonLoading";
 
 
 const PlanetDetails = (props) => {
+    useDocumentTitle('Planets Details');
     let {id} = useParams();
     const {data, loading, error, fetchMore} = useQuery(GET_PLANET_DETAILS, {
         variables: {
@@ -18,6 +21,7 @@ const PlanetDetails = (props) => {
 
     return (
         <>
+            <Header textHeader={'Planet details'} homeButton={true}/>
             <S.Wrapper>
                 <S.Container>
                     <Header textHeader="Basic info"/>
@@ -36,38 +40,39 @@ const PlanetDetails = (props) => {
                 <S.Container>
                     <Header textHeader="Movies"/>
                     <S.MovieContainer>
-                        {data?.planet.filmConnection.films.map(film => {
-                            return (
-                                <React.Fragment key={film.id}>
-                                    <S.InfoElement>
-                                        <S.MovieHeader>
-                                            {film.title}
-                                        </S.MovieHeader>
-                                        <S.MovieDirector>
-                                            Director: {film.director}
-                                        </S.MovieDirector>
-                                        <S.MovieOpening>
-                                            {film.openingCrawl}
-                                        </S.MovieOpening>
-                                        <S.MovieHeader>
-                                            Characters:
-                                        </S.MovieHeader>
-                                        <S.CharactersContainer>
-                                            {film.characterConnection.characters.map(character => {
-                                                return (
-                                                    <S.MovieCharacter key={character.name}>
-                                                        {`${character.name},`}
-                                                    </S.MovieCharacter>
-                                                )
+                        {data ? data.planet.filmConnection.films.length === 0 ?
+                            <h1>No movies connected to planet.</h1> : data.planet.filmConnection.films.map(film => {
+                                return (
+                                    <React.Fragment key={film.id}>
+                                        <S.InfoElement>
+                                            <S.MovieHeader>
+                                                {film.title}
+                                            </S.MovieHeader>
+                                            <S.MovieDirector>
+                                                Director: {film.director}
+                                            </S.MovieDirector>
+                                            <S.MovieOpening>
+                                                {film.openingCrawl}
+                                            </S.MovieOpening>
+                                            <S.MovieHeader>
+                                                Characters:
+                                            </S.MovieHeader>
+                                            <S.CharactersContainer>
+                                                {film.characterConnection.characters.map(character => {
+                                                    return (
+                                                        <S.MovieCharacter key={character.name}>
+                                                            {`${character.name},`}
+                                                        </S.MovieCharacter>
+                                                    )
 
-                                            })}
-                                        </S.CharactersContainer>
-                                    </S.InfoElement>
-                                    <S.Divider/>
-                                </React.Fragment>
+                                                })}
+                                            </S.CharactersContainer>
+                                        </S.InfoElement>
+                                        <S.Divider/>
+                                    </React.Fragment>
 
-                            )
-                        })}
+                                )
+                            }) : <SkeletonLoading count={10}/>}
                     </S.MovieContainer>
                 </S.Container>
             </S.Wrapper>}

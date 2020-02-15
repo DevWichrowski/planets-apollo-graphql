@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
 position: relative;
-height: 100%;
+height: calc(100% - 40px);
 `;
 
 export const ListWrapper = styled.div`
@@ -16,7 +16,7 @@ margin: 0 auto;
 padding: 30px;
 width: 100%;
 overflow: auto;
-min-height: 90%;
+height: 95%;
 
 @media screen and (max-width: 1000px) {
 grid-template-columns: repeat(4, minmax(23%, 25%));

@@ -11,7 +11,7 @@ const InfoBox = ({headerText, value}) => {
                 {headerText}
             </S.InfoHeader>
             <S.InfoData>
-                {value ? guardSkeleton(value) : 'Unknown'}
+                {guardSkeleton(value)}
             </S.InfoData>
         </S.InfoElement>
     );
