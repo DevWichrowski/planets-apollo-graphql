@@ -12,6 +12,7 @@ query planetDetails($id: ID) {
     surfaceWater
     filmConnection{
       films{
+        id
         title
         openingCrawl
         director
