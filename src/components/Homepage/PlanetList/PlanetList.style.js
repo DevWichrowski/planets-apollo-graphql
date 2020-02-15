@@ -11,4 +11,20 @@ padding: 30px;
 width: 100%;
 overflow: auto;
 min-height: 90%;
+
+@media screen and (max-width: 1000px) {
+grid-template-columns: repeat(4, minmax(23%, 25%));
+}
+
+@media screen and (max-width: 800px) {
+grid-template-columns: repeat(3, minmax(30%, 33%));
+}
+
+@media screen and (max-width: 650px) {
+grid-template-columns: repeat(2, minmax(48%, 50%));
+}
+
+@media screen and (max-width: 400px) {
+grid-template-columns: repeat(1, minmax(98%, 100%));
+}
 `;
