@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 
 const Header = ({textHeader, homeButton}) => {
-    const [width, setWidth] = useState(window.innerWidth);
+    const [width, setWidth] = useState(null);
     const history = useHistory();
 
     const navigateToHome = () => {

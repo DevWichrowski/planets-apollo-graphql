@@ -26,7 +26,7 @@ const PlanetList = () => {
     }, [data]);
 
     const navigateToPlanet = id => {
-        history.push(`/planet/${id}`)
+        history.push(`/planet/${id}`);
         localStorage.setItem('pageInfo', 'asd')
     };
 
