@@ -23,7 +23,6 @@ const PlanetList = () => {
         if (data) {
             setHasNextPage(data?.allPlanets?.pageInfo.hasNextPage)
         }
-
     }, [data]);
 
     const navigateToPlanet = id => {
@@ -85,18 +84,18 @@ const PlanetList = () => {
     };
 
     return (
-        <div style={{position: 'relative', height: '100%'}}>
-            <S.Wrapper>
+        <S.Wrapper>
+            <S.ListWrapper>
                 {data?.allPlanets.edges.map(edge => {
                     return (
                         <Planet key={edge.planet.id} data={edge.planet}
                                 navigateTo={() => navigateToPlanet(edge.planet.id)}/>
                     )
                 })}
-            </S.Wrapper>
+            </S.ListWrapper>
             <Pagination loading={loading} hasNextPage={hasNextPage} page={page} nextPage={nextPage}
                         prevPage={prevPage}/>
-        </div>
+        </S.Wrapper>
     );
 };
 

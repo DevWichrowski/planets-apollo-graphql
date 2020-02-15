@@ -17,7 +17,7 @@ const Pagination = ({hasNextPage, loading, page, nextPage, prevPage}) => {
 
 Pagination.propTypes = {
     hasNextPage: PropTypes.bool.isRequired,
-    page: PropTypes.bool.isRequired,
+    page: PropTypes.number.isRequired,
     loading: PropTypes.bool.isRequired,
     nextPage: PropTypes.func.isRequired,
     prevPage: PropTypes.func.isRequired

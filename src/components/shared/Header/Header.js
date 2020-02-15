@@ -21,7 +21,7 @@ const Header = ({textHeader, homeButton}) => {
 };
 
 Header.propTypes = {
-    textHeader: PropTypes.string.isRequired,
+    textHeader: PropTypes.string,
     homeButton: PropTypes.bool
 };
 

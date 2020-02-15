@@ -12,7 +12,7 @@ const Button = ({onClick, children, next}) => {
 Button.propTypes = {
     onClick: PropTypes.func.isRequired,
     children: PropTypes.string.isRequired,
-    next: PropTypes.string
+    next: PropTypes.bool
 };
 
 export default Button;
