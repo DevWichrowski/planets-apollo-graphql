@@ -2,39 +2,20 @@ import React from 'react';
 import * as S from "./Planet.styled";
 import Header from "../../../shared/Header/Header";
 import PropTypes from 'prop-types';
+import InfoBox from "../../../shared/InfoBox/InfoBox";
 
 
 const Planet = props => {
-    const {name, climates, population, gravity, navigateTo} = props.data;
+    const {name, climates, population, gravity} = props.data;
 
     return (
         <S.Wrapper onClick={props.navigateTo}>
             <Header textHeader={name}/>
             <S.InfoContainer>
-                <S.InfoElement>
-                    <S.InfoHeader>
-                        Climates:
-                    </S.InfoHeader>
-                    <S.InfoData>
-                        {climates.map(climate => <React.Fragment key={climate}>{climate}</React.Fragment>)}
-                    </S.InfoData>
-                </S.InfoElement>
-                <S.InfoElement>
-                    <S.InfoHeader>
-                        Population:
-                    </S.InfoHeader>
-                    <S.InfoData>
-                        {population !== null ? population : 'unknown'}
-                    </S.InfoData>
-                </S.InfoElement>
-                <S.InfoElement>
-                    <S.InfoHeader>
-                        Gravity:
-                    </S.InfoHeader>
-                    <S.InfoData>
-                        {gravity}
-                    </S.InfoData>
-                </S.InfoElement>
+                <InfoBox headerText={"Climates:"}
+                         value={climates.map(climate => <React.Fragment key={climate}>{climate}</React.Fragment>)}/>
+                <InfoBox headerText={"Population:"} value={population}/>
+                <InfoBox headerText={"Gravity:"} value={gravity}/>
             </S.InfoContainer>
         </S.Wrapper>
     );
