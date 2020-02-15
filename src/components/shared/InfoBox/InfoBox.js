@@ -11,7 +11,7 @@ const InfoBox = ({headerText, value}) => {
                 {headerText}
             </S.InfoHeader>
             <S.InfoData>
-                {guardSkeleton(value)}
+                {value ? guardSkeleton(value) : 'Unknown'}
             </S.InfoData>
         </S.InfoElement>
     );
@@ -19,10 +19,7 @@ const InfoBox = ({headerText, value}) => {
 
 InfoBox.propTypes = {
     headerText: PropTypes.string.isRequired,
-    value: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.object
-    ])
+    value: PropTypes.any
 };
 
 export default InfoBox;
