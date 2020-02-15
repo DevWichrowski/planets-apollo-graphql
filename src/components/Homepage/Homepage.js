@@ -1,11 +1,13 @@
 import React from 'react';
 import PlanetList from "./PlanetList/PlanetList";
+import * as S from "../Homepage/Homepage.styled"
+
 
 const Homepage = () => {
     return (
-        <div style={{height: '100%'}}>
+        <S.Wrapper>
             <PlanetList/>
-        </div>
+        </S.Wrapper>
     );
 };
 

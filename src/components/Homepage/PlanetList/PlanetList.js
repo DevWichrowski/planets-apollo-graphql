@@ -4,7 +4,7 @@ import {GET_ALL_PLANETS} from "../../../core/graphql/queries/planets.query";
 import Planet from "./Planet/Planet";
 import Pagination from "../../shared/Pagination/Pagination";
 import {useHistory} from 'react-router-dom';
-import * as Style from "./PlanetList.styled";
+import * as S from "./PlanetList.styled";
 
 const PlanetList = () => {
     const history = useHistory();
@@ -86,14 +86,14 @@ const PlanetList = () => {
 
     return (
         <div style={{position: 'relative', height: '100%'}}>
-            <Style.Wrapper>
+            <S.Wrapper>
                 {data?.allPlanets.edges.map(edge => {
                     return (
                         <Planet key={edge.planet.id} data={edge.planet}
                                 navigateTo={() => navigateToPlanet(edge.planet.id)}/>
                     )
                 })}
-            </Style.Wrapper>
+            </S.Wrapper>
             <Pagination loading={loading} hasNextPage={hasNextPage} page={page} nextPage={nextPage}
                         prevPage={prevPage}/>
         </div>

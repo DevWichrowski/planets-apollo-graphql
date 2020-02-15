@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Style from "./Planet.styled";
+import * as S from "./Planet.styled";
 import Header from "../../../shared/Header/Header";
 
 // const style = {
@@ -13,13 +13,13 @@ const Planet = props => {
     const {name, climates, population, gravity, navigateTo} = props.data;
 
     return (
-        <Style.Wrapper onClick={props.navigateTo}>
+        <S.Wrapper onClick={props.navigateTo}>
             <Header textHeader={name}/>
             {/*<h1>Name: {name}</h1>*/}
             <p>Climates: {climates.map(climate => climate)}</p>
             <p>Population: {population}</p>
             <p>Gravity: {gravity}</p>
-        </Style.Wrapper>
+        </S.Wrapper>
     );
 };
 

@@ -1,9 +1,9 @@
 import React from 'react';
-import * as Style from "./Footer.styled";
+import * as S from "./Footer.styled";
 
 const Footer = () => {
     return (
-        <Style.Wrapper/>
+        <S.Wrapper/>
     );
 };
 

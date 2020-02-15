@@ -1,17 +1,17 @@
 import React from 'react';
-import * as Style from "./Pagination.styled";
+import * as S from "./Pagination.styled";
 import Button from "../Button/Button";
 import PropTypes from 'prop-types';
 
 const Pagination = ({hasNextPage, loading, page, nextPage, prevPage}) => {
     return (
-        <Style.Wrapper>
-            {page === 1 && <Style.Placeholder/>}
+        <S.Wrapper>
+            {page === 1 && <S.Placeholder/>}
             {page > 1 && <Button onClick={prevPage}>Previous page</Button>}
-            <Style.PageNumber>{page}</Style.PageNumber>
+            <S.PageNumber>{page}</S.PageNumber>
             {(hasNextPage || loading) ?
-                <Button next onClick={nextPage}>Next page</Button> : <Style.Placeholder/>}
-        </Style.Wrapper>
+                <Button next onClick={nextPage}>Next page</Button> : <S.Placeholder/>}
+        </S.Wrapper>
     );
 };
 
