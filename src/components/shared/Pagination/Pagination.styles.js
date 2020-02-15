@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {darkGrayColor, whiteColor} from "../../../styles/colors";
+
 
 export const Wrapper = styled.div`
 display: flex;
@@ -31,6 +31,14 @@ export const Placeholder = styled.button`
 `;
 
 export const PageNumber = styled.p`
+display: flex;
+justify-content: center;
+align-items: center;
 font-weight: bold;
 margin: 0 10px;
+height: 30px;
+width: 30px;
+border-radius: 50%;
+background-color: rgba(235,235,235,0.48);
+font-size: 0.7vw;
 `;

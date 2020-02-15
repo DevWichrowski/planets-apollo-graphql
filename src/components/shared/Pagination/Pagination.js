@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Style from "./Pagination.styles";
 import Button from "../Button/Button";
-
+import PropTypes from 'prop-types';
 
 const Pagination = ({hasNextPage, loading, page, nextPage, prevPage}) => {
     return (
@@ -13,6 +13,14 @@ const Pagination = ({hasNextPage, loading, page, nextPage, prevPage}) => {
                 <Button next onClick={nextPage}>Next page</Button> : <Style.Placeholder/>}
         </Style.Wrapper>
     );
+};
+
+Pagination.propTypes = {
+    hasNextPage: PropTypes.bool.isRequired,
+    page: PropTypes.bool.isRequired,
+    loading: PropTypes.bool.isRequired,
+    nextPage: PropTypes.func.isRequired,
+    prevPage: PropTypes.func.isRequired
 };
 
 export default Pagination;
