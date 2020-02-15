@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Style from "./Pagination.styles";
+import * as Style from "./Pagination.styled";
 import Button from "../Button/Button";
 import PropTypes from 'prop-types';
 

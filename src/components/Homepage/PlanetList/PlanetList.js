@@ -4,7 +4,7 @@ import {GET_ALL_PLANETS} from "../../../core/graphql/queries/planets.query";
 import Planet from "./Planet/Planet";
 import Pagination from "../../shared/Pagination/Pagination";
 import {useHistory} from 'react-router-dom';
-import * as Style from "./PlanetList.style";
+import * as Style from "./PlanetList.styled";
 
 const PlanetList = () => {
     const history = useHistory();

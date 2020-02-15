@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Style from "./Planet.style";
+import * as Style from "./Planet.styled";
 import Header from "../../../shared/Header/Header";
 
 // const style = {
