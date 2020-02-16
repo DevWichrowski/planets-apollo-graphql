@@ -1,15 +1,15 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useQuery} from "@apollo/react-hooks";
 import {GET_ALL_PLANETS} from "../../../core/graphql/queries/planets.query";
 import Planet from "./Planet/Planet";
 import Pagination from "../../shared/Pagination/Pagination";
 import {useHistory} from 'react-router-dom';
 import * as S from "./PlanetList.styled";
-import {PageInfoContext} from "../../../core/context/pageInfo-contetx";
+import {getSessionStorageItem} from "../../../utils/helpers/get-session-storage-item";
+import {setSessionStorageItem} from "../../../utils/helpers/set-session-storage-item";
 
 const PlanetList = () => {
     const history = useHistory();
-    const pageInfoContext = useContext(PageInfoContext);
 
     const [page, setPage] = useState(1);
     const [hasNextPage, setHasNextPage] = useState(false);
@@ -17,34 +17,38 @@ const PlanetList = () => {
     const {data, loading, fetchMore} = useQuery(GET_ALL_PLANETS, {
         variables: {
             first: 10,
-            cursor: pageInfoContext.pageInfo.cursor ?? null
+            cursor: getSessionStorageItem('cursor') ?? null
         },
         notifyOnNetworkStatusChange: true
     });
 
     useEffect(() => {
-        setPage(pageInfoContext.pageInfo.page)
+        setPage(getSessionStorageItem('page'))
     }, []);
 
     useEffect(() => {
         if (data) {
             setHasNextPage(data?.allPlanets?.pageInfo.hasNextPage)
         }
+        console.log('hasNextPage', hasNextPage)
     }, [data]);
+
 
     const navigateToPlanet = id => {
         history.push(`/planet/${id}`);
-        pageInfoContext.setContext({
-            page,
-            cursor: data?.allPlanets.pageInfo.endCursor
-        });
+        setSessionStorageItem('page', page);
+        setSessionStorageItem('cursor', data.allPlanets.pageInfo.endCursor);
     };
 
-    const handleNextPage = () => setPage(page + 1);
+    const handleNextPage = () => {
+        setPage(page + 1)
+        setSessionStorageItem('page', page + 1)
+    };
 
     const handlePreviousPage = () => {
         setPage(page - 1);
         setHasNextPage(true);
+        setSessionStorageItem('page', page - 1)
     };
 
     const nextPage = () => {
