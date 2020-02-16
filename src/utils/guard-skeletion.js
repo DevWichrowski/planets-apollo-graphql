@@ -9,7 +9,7 @@ export const guardSkeleton = value => {
 
     if (value === undefined) {
         return (
-         <SkeletonLoading />
+            <SkeletonLoading/>
         )
     }
 
