@@ -12,12 +12,10 @@ const PlanetList = () => {
     const pageInfoContext = useContext(PageInfoContext);
 
     const [page, setPage] = useState(1);
-    const [hasNextPage, setHasNextPage] = useState(false);
 
     const {data, loading, fetchMore} = useQuery(GET_ALL_PLANETS, {
         variables: {
             first: 10,
-            cursor: pageInfoContext.pageInfo.cursor ?? null
         },
         notifyOnNetworkStatusChange: true
     });
@@ -25,12 +23,6 @@ const PlanetList = () => {
     useEffect(() => {
         setPage(pageInfoContext.pageInfo.page)
     }, []);
-
-    useEffect(() => {
-        if (data) {
-            setHasNextPage(data?.allPlanets?.pageInfo.hasNextPage)
-        }
-    }, [data]);
 
     const navigateToPlanet = id => {
         history.push(`/planet/${id}`);
@@ -42,10 +34,7 @@ const PlanetList = () => {
 
     const handleNextPage = () => setPage(page + 1);
 
-    const handlePreviousPage = () => {
-        setPage(page - 1);
-        setHasNextPage(true);
-    };
+    const handlePreviousPage = () => setPage(page - 1);
 
     const nextPage = () => {
         fetchMore({
@@ -62,7 +51,7 @@ const PlanetList = () => {
                         allPlanets: {
                             __typename: previousResult.allPlanets.__typename,
                             edges: [...newEdges],
-                            pageInfo
+                            pageInfo: {...pageInfo, hasPreviousPage: true}
                         }
                     }
                     : previousResult;
@@ -86,7 +75,7 @@ const PlanetList = () => {
                         allPlanets: {
                             __typename: previousResult.allPlanets.__typename,
                             edges: [...newEdges],
-                            pageInfo
+                            pageInfo: {...pageInfo, hasNextPage: true}
                         }
                     }
                     : previousResult;
@@ -104,7 +93,7 @@ const PlanetList = () => {
                     )
                 })}
             </S.ListWrapper>
-            <Pagination loading={loading} hasNextPage={hasNextPage} page={page} nextPage={nextPage}
+            <Pagination loading={loading} hasNextPage={data?.allPlanets.pageInfo.hasNextPage} hasPreviousPage={data?.allPlanets.pageInfo.hasPreviousPage} page={page} nextPage={nextPage}
                         prevPage={prevPage}/>
         </S.Wrapper>
     );

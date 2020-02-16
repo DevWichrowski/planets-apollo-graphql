@@ -5,6 +5,7 @@ query allPlanets($first: Int = null, $last: Int = null, $after: String, $before:
    allPlanets(first: $first, last: $last, after: $after, before: $before){
    pageInfo{
       hasNextPage
+      hasPreviousPage
       startCursor
       endCursor
     }
