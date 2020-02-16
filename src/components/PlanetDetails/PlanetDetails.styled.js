@@ -113,4 +113,4 @@ export const Divider = styled.hr`
 export const NoMovies = styled.h1`{
 text-align: center;
 width: 100%;
-}`
+}`;
