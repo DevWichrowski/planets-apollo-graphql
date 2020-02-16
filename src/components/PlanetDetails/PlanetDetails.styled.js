@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {headerColor, lightGrayColor, orangeColor} from "../../styles/colors";
+import {boxShadow} from "../../styles/box-shadow";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -18,7 +19,7 @@ padding: 15px 0;
 export const Container = styled.div`
   width: 60%;
   padding: 10px 0;
-   box-shadow: 4px 4px 13px 0px rgba(0,0,0,0.75);
+   box-shadow: ${boxShadow};
    min-height: 300px;
    border-radius: 5px;
    background-color: transparent;

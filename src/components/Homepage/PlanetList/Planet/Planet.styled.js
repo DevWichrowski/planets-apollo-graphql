@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {buttonHover, lightGrayColor} from "../../../../styles/colors";
+import {boxShadow} from "../../../../styles/box-shadow";
 
 
 export const Wrapper = styled.div`
@@ -13,7 +14,7 @@ min-height: 260px;
 max-height: 300px;
 background-color: transparent;
 border: 0.5px solid ${lightGrayColor};
-box-shadow: 4px 4px 13px 0px rgba(0,0,0,0.75);
+box-shadow: ${boxShadow};
 cursor: pointer;
 transition: all 0.5s;
 
