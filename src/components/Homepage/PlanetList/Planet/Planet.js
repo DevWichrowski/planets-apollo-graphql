@@ -5,11 +5,10 @@ import PropTypes from 'prop-types';
 import InfoBox from "../../../shared/InfoBox/InfoBox";
 
 
-const Planet = props => {
-    const {name, climates, population, gravity} = props.data;
+const Planet = ({ data: { name, climates, population, gravity }, navigateTo }) => {
 
     return (
-        <S.Wrapper onClick={props.navigateTo}>
+        <S.Wrapper onClick={navigateTo}>
             <Header textHeader={name}/>
             <S.InfoContainer>
                 <InfoBox headerText={"Climates:"}
