@@ -1,13 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useQuery} from "@apollo/react-hooks";
 import {GET_ALL_PLANETS} from "../../../core/graphql/queries/planets.query";
 import Planet from "./Planet/Planet";
 import Pagination from "../../shared/Pagination/Pagination";
 import {useHistory} from 'react-router-dom';
 import * as S from "./PlanetList.styled";
+import {PageInfoContext} from "../../../core/context/pageInfo-contetx";
 
 const PlanetList = () => {
     const history = useHistory();
+    const pageInfoContext = useContext(PageInfoContext);
 
     const [page, setPage] = useState(1);
     const [hasNextPage, setHasNextPage] = useState(false);
@@ -15,9 +17,14 @@ const PlanetList = () => {
     const {data, loading, fetchMore} = useQuery(GET_ALL_PLANETS, {
         variables: {
             first: 10,
+            cursor: pageInfoContext.pageInfo.cursor ?? null
         },
         notifyOnNetworkStatusChange: true
     });
+
+    useEffect(() => {
+        setPage(pageInfoContext.pageInfo.page)
+    }, []);
 
     useEffect(() => {
         if (data) {
@@ -27,7 +34,10 @@ const PlanetList = () => {
 
     const navigateToPlanet = id => {
         history.push(`/planet/${id}`);
-        localStorage.setItem('pageInfo', 'asd')
+        pageInfoContext.setContext({
+            page,
+            cursor: data?.allPlanets.pageInfo.endCursor
+        });
     };
 
     const handleNextPage = () => setPage(page + 1);

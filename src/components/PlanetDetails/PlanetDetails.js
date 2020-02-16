@@ -1,16 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {useParams} from "react-router-dom";
 import {useQuery} from "@apollo/react-hooks";
-import {GET_PLANET_DETAILS} from "../../../core/graphql/queries/planet-details.query";
+import {GET_PLANET_DETAILS} from "../../core/graphql/queries/planet-details.query";
 import * as S from "./PlanetDetails.styled";
-import Header from "../../shared/Header/Header";
-import InfoBox from "../../shared/InfoBox/InfoBox";
-import {useDocumentTitle} from "../../../utils/helpers/hooks";
-import SkeletonLoading from "../../shared/SkeletonLoading/SkeletonLoading";
+import Header from "../shared/Header/Header";
+import InfoBox from "../shared/InfoBox/InfoBox";
+import {useDocumentTitle} from "../../utils/helpers/hooks";
+import SkeletonLoading from "../shared/SkeletonLoading/SkeletonLoading";
 
 
-const PlanetDetails = (props) => {
+const PlanetDetails = () => {
     useDocumentTitle('Planets Details');
+
     let {id} = useParams();
     const {data} = useQuery(GET_PLANET_DETAILS, {
         variables: {

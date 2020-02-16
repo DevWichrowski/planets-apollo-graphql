@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {darkGrayColor, whiteColor} from "../../../styles/colors";
 
 export const Button = styled.button`
   background-color: ${props => props.next ? 'black' : '#2a2b2b'};
@@ -19,4 +18,12 @@ export const Button = styled.button`
   transition: all 0.5s;
   cursor: pointer;
   min-width: 115px;
+  
+  
+  &:hover {
+    background-color: rgb(79,79,81);
+    color: rgba(225,225,225,0.8);
+    border: none;
+    transition: 0.5s;
+  }
 `;
