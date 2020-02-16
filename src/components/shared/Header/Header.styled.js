@@ -24,8 +24,10 @@ text-align: center;
 
 export const Title = styled.h3`
 color:rgba(224, 160, 16, 0.75);
-font-size: 24px;
+font-size: 2vh;
 font-weight: normal;
-text-align: center;
+display: flex;
+align-items: center;
+justify-content: center;
 margin: 0;
 `;
