@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {buttonHover} from "../../../../styles/colors";
 
 
 export const Wrapper = styled.div`
@@ -18,7 +19,7 @@ transition: all 0.5s;
 
   &:hover{
   transition: all 0.5s;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: ${buttonHover};
   font-weight: bold;
   }
 `;
@@ -31,20 +32,4 @@ display: flex;
 flex-direction: column;
 justify-content: flex-start;
 color: rgba(255, 255, 255, 0.6);
-`;
-
-export const InfoElement = styled.div`
-display: flex;
-flex-direction: column;
-padding: 15px 0;
-`;
-
-export const InfoHeader = styled.div`
-font-weight: bold;
-margin-bottom: 5px;
-color: rgba(255, 255, 255, 0.8);
-`;
-
-export const InfoData = styled.div`
-word-break: break-all;
 `;

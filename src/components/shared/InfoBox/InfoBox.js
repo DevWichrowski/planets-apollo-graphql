@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from "./InfoBox.styled";
 import PropTypes from 'prop-types';
-import {guardSkeleton} from "../../../utils/helpers/guard-skeletion";
+import {guardSkeleton} from "../../../utils/guard-skeletion";
 
 
 const InfoBox = ({headerText, value}) => {

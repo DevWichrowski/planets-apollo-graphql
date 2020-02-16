@@ -13,7 +13,7 @@ const Planet = props => {
             <Header textHeader={name}/>
             <S.InfoContainer>
                 <InfoBox headerText={"Climates:"}
-                         value={climates.map(climate => <React.Fragment key={climate}>{climate}</React.Fragment>)}/>
+                         value={climates.map(climate => <React.Fragment key={climate}>{`${climate} `}</React.Fragment>)}/>
                 <InfoBox headerText={"Population:"} value={population}/>
                 <InfoBox headerText={"Gravity:"} value={gravity}/>
             </S.InfoContainer>

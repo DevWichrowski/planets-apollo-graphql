@@ -7,6 +7,7 @@ import {useHistory} from 'react-router-dom';
 import * as S from "./PlanetList.styled";
 import {PageInfoContext} from "../../../core/context/pageInfo-contetx";
 
+
 const PlanetList = () => {
     const history = useHistory();
     const pageInfoContext = useContext(PageInfoContext);
@@ -21,20 +22,17 @@ const PlanetList = () => {
     });
 
     useEffect(() => {
-        setPage(pageInfoContext.pageInfo.page)
-    }, []);
+        setPage(pageInfoContext.pageContext)
+    }, [pageInfoContext.pageContext]);
 
     const navigateToPlanet = id => {
         history.push(`/planet/${id}`);
-        pageInfoContext.setContext({
-            page,
-            cursor: data?.allPlanets.pageInfo.endCursor
-        });
+        pageInfoContext.setContext(page);
     };
 
-    const handleNextPage = () => setPage(page + 1);
+    const addPage = () => setPage(page + 1);
 
-    const handlePreviousPage = () => setPage(page - 1);
+    const substractPage = () => setPage(page - 1);
 
     const nextPage = () => {
         fetchMore({
@@ -56,7 +54,7 @@ const PlanetList = () => {
                     }
                     : previousResult;
             },
-        }).then(() => handleNextPage())
+        }).then(() => addPage())
     };
 
     const prevPage = () => {
@@ -80,7 +78,7 @@ const PlanetList = () => {
                     }
                     : previousResult;
             },
-        }).then(() => handlePreviousPage())
+        }).then(() => substractPage())
     };
 
     return (
@@ -93,8 +91,13 @@ const PlanetList = () => {
                     )
                 })}
             </S.ListWrapper>
-            <Pagination loading={loading} hasNextPage={data?.allPlanets.pageInfo.hasNextPage} hasPreviousPage={data?.allPlanets.pageInfo.hasPreviousPage} page={page} nextPage={nextPage}
-                        prevPage={prevPage}/>
+            <Pagination loading={loading}
+                        hasNextPage={data?.allPlanets.pageInfo.hasNextPage}
+                        hasPreviousPage={data?.allPlanets.pageInfo.hasPreviousPage}
+                        page={page}
+                        nextPage={nextPage}
+                        prevPage={prevPage}
+            />
         </S.Wrapper>
     );
 };

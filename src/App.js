@@ -7,15 +7,12 @@ import {PageInfoContext} from "./core/context/pageInfo-contetx";
 
 
 const App = () => {
-    const [pageInfo, setPageInfo] = useState({
-        page: 1,
-        cursor: null
-    });
+    const [pageContext, setPageContext] = useState(1);
 
     return (
         <PageInfoContext.Provider value={{
-            pageInfo,
-            setContext: value => setPageInfo(value)
+            pageContext,
+            setContext: value => setPageContext(value)
         }}>
             <Style.AppWrapper>
                 <Style.Twinkling>

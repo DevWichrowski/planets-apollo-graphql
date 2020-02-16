@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const Button = styled.button`
   background-color: ${props => props.next ? 'black' : '#2a2b2b'};
   color: ${props => props.next ? 'rgba(255,255,255,0.8)' : 'rgba(224,160,16,0.75)'};
@@ -26,4 +27,9 @@ export const Button = styled.button`
     border: none;
     transition: 0.5s;
   }
+  
+   @media screen and (max-width: 1000px) {
+   min-width: 80px;
+   font-size: 10px;
+   }
 `;

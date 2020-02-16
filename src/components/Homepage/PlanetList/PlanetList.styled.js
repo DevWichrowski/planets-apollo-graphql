@@ -9,7 +9,7 @@ height: calc(100% - 40px);
 export const ListWrapper = styled.div`
 display: grid;
 grid-template-columns: repeat(5, minmax(18%, 20%));
-grid-template-rows: repeat(2, minmax(260px, 300px)); 
+grid-template-rows: repeat(2, minmax(260px, 350px)); 
 grid-column-gap: 2%;
 grid-row-gap: 15px;
 margin: 0 auto;
@@ -20,17 +20,21 @@ height: 95%;
 
 @media screen and (max-width: 1000px) {
 grid-template-columns: repeat(4, minmax(23%, 25%));
+grid-template-rows: repeat(3, minmax(350px, 350px)); 
 }
 
 @media screen and (max-width: 800px) {
 grid-template-columns: repeat(3, minmax(30%, 33%));
+grid-template-rows: repeat(3, minmax(300px, 350px)); 
 }
 
 @media screen and (max-width: 650px) {
 grid-template-columns: repeat(2, minmax(48%, 50%));
+grid-template-rows: repeat(3, minmax(300px, 350px)); 
 }
 
 @media screen and (max-width: 400px) {
 grid-template-columns: repeat(1, minmax(98%, 100%));
+grid-template-rows: repeat(3, minmax(300px, 350px)); 
 }
 `;
