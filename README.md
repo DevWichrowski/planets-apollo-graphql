@@ -3,7 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## SWAPI Planets
 ##### Demo: https://wichrowski.dev/swapi/
 #### Aby uruchonić projekt:
-### `yarn install`
+### `yarn`
 ### `yarn start`
 
 Projekt uruchomi się  pod adresem: http://localhost:3000/
