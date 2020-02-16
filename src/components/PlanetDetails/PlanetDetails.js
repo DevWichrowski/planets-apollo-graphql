@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {useParams} from "react-router-dom";
 import {useQuery} from "@apollo/react-hooks";
 import {GET_PLANET_DETAILS} from "../../core/graphql/queries/planet-details.query";
@@ -32,8 +32,8 @@ const PlanetDetails = () => {
                         <InfoBox headerText={"Rotation period:"} value={data?.planet.rotationPeriod}/>
                         <InfoBox headerText={"Gravity:"} value={data?.planet.gravity}/>
                         <InfoBox headerText={"Population:"} value={data?.planet.population}/>
-                        <InfoBox headerText={"Terrains:"} value={data?.planet.terrains.map(terrain => <React.Fragment
-                            key={terrain}>{`${terrain}, `}</React.Fragment>)}/>
+                        <InfoBox headerText={"Terrains:"} value={data?.planet.terrains.map(terrain => <Fragment
+                            key={terrain}>{`${terrain}, `}</Fragment>)}/>
                         <InfoBox headerText={"Surface water:"} value={data?.planet.surfaceWater}/>
                         <InfoBox headerText={"Gravity:"} value={data?.planet.gravity}/>
                     </S.InfoContainer>
@@ -45,7 +45,7 @@ const PlanetDetails = () => {
                             <S.NoMovies>No movies connected to
                                 planet.</S.NoMovies> : data.planet.filmConnection.films.map(film => {
                                 return (
-                                    <React.Fragment key={film.id}>
+                                    <Fragment key={film.id}>
                                         <S.InfoElement>
                                             <S.MovieHeader>
                                                 {film.title}
@@ -71,8 +71,7 @@ const PlanetDetails = () => {
                                             </S.CharactersContainer>
                                         </S.InfoElement>
                                         <S.Divider/>
-                                    </React.Fragment>
-
+                                    </Fragment>
                                 )
                             }) : <SkeletonLoading count={10}/>}
                     </S.MovieContainer>

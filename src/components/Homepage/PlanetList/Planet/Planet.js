@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import * as S from "./Planet.styled";
 import Header from "../../../shared/Header/Header";
 import PropTypes from 'prop-types';
@@ -12,8 +12,8 @@ const Planet = ({ data: { name, climates, population, gravity }, navigateTo }) =
             <Header textHeader={name}/>
             <S.InfoContainer>
                 <InfoBox headerText={"Climates:"}
-                         value={climates.map(climate => <React.Fragment
-                             key={climate}>{`${climate} `}</React.Fragment>)}/>
+                         value={climates.map(climate => <Fragment
+                             key={climate}>{`${climate} `}</Fragment>)}/>
                 <InfoBox headerText={"Population:"} value={population}/>
                 <InfoBox headerText={"Gravity:"} value={gravity}/>
             </S.InfoContainer>
