@@ -1,16 +1,34 @@
-import React from 'react';
-import * as Style from "./App.style";
+import React, {useState} from 'react';
+import * as Style from "./App.styled";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import PlanetDetails from "./components/PlanetDetails/PlanetDetails";
 import Homepage from "./components/Homepage/Homepage";
-import {BrowserRouter, Route} from "react-router-dom";
+import {PageInfoContext} from "./core/context/pageInfo-contetx";
 
 
 const App = () => {
+    const [pageContext, setPageContext] = useState(1);
+
     return (
-        <Style.AppWrapper>
-            <BrowserRouter>
-                <Route exact path="/" component={Homepage}/>
-            </BrowserRouter>
-        </Style.AppWrapper>
+        <PageInfoContext.Provider value={{
+            pageContext,
+            setContext: value => setPageContext(value)
+        }}>
+            <Style.AppWrapper>
+                <Style.Twinkling>
+                    <BrowserRouter>
+                        <Switch>
+                            <Route path="/planet/:id">
+                                <PlanetDetails/>
+                            </Route>
+                            <Route exact path="/">
+                                <Homepage/>
+                            </Route>
+                        </Switch>
+                    </BrowserRouter>
+                </Style.Twinkling>
+            </Style.AppWrapper>
+        </PageInfoContext.Provider>
     );
 };
 

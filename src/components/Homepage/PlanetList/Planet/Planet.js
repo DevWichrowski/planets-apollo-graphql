@@ -1,23 +1,29 @@
-import React from 'react';
+import React, {Fragment} from 'react';
+import * as S from "./Planet.styled";
+import Header from "../../../shared/Header/Header";
+import PropTypes from 'prop-types';
+import InfoBox from "../../../shared/InfoBox/InfoBox";
 
-const style = {
-    border: '1px solid black',
-    borderRadius: '10px',
-    margin: '20px',
-    padding: '10px'
-};
 
-const Planet = props => {
-    const {name, climates, population, gravity} = props.data;
+const Planet = ({ data: { name, climates, population, gravity }, navigateTo }) => {
 
     return (
-        <div style={style}>
-            <h1>Name: {name}</h1>
-            <h2>Climates: {climates.map(climate => climate)}</h2>
-            <h2>Population: {population}</h2>
-            <p>Gravity: {gravity}</p>
-        </div>
+        <S.Wrapper onClick={navigateTo}>
+            <Header textHeader={name}/>
+            <S.InfoContainer>
+                <InfoBox headerText={"Climates:"}
+                         value={climates.map(climate => <Fragment
+                             key={climate}>{`${climate} `}</Fragment>)}/>
+                <InfoBox headerText={"Population:"} value={population}/>
+                <InfoBox headerText={"Gravity:"} value={gravity}/>
+            </S.InfoContainer>
+        </S.Wrapper>
     );
+};
+
+Planet.propTypes = {
+    data: PropTypes.object.isRequired,
+    navigateTo: PropTypes.func.isRequired,
 };
 
 export default Planet;

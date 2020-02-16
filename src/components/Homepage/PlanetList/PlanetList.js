@@ -1,26 +1,45 @@
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useQuery} from "@apollo/react-hooks";
 import {GET_ALL_PLANETS} from "../../../core/graphql/queries/planets.query";
 import Planet from "./Planet/Planet";
-import Pagination from "./Pagination/Pagination";
+import Pagination from "../../shared/Pagination/Pagination";
+import {useHistory} from 'react-router-dom';
+import * as S from "./PlanetList.styled";
+import {PageInfoContext} from "../../../core/context/pageInfo-contetx";
+
 
 const PlanetList = () => {
-    const [page, setPage] = useState(1);
-    const [hasNextPage, setHasNextPage] = useState(false);
+    const history = useHistory();
+    const pageInfoContext = useContext(PageInfoContext);
 
-    const {data, loading, error, fetchMore} = useQuery(GET_ALL_PLANETS, {
+    const [page, setPage] = useState(1);
+
+    const {data, loading, fetchMore} = useQuery(GET_ALL_PLANETS, {
         variables: {
             first: 10,
         },
         notifyOnNetworkStatusChange: true
     });
 
+    useEffect(() => {
+        setPage(pageInfoContext.pageContext)
+    }, [pageInfoContext.pageContext]);
+
+    const navigateToPlanet = id => {
+        history.push(`/planet/${id}`);
+        pageInfoContext.setContext(page);
+    };
+
+    const addPage = () => setPage(page + 1);
+
+    const substractPage = () => setPage(page - 1);
+
     const nextPage = () => {
         fetchMore({
             variables: {
-                after: data.allPlanets.pageInfo.endCursor,
+                after: data?.allPlanets.pageInfo.endCursor,
                 first: 10,
-                last: null
+                last: null,
             },
             updateQuery: (previousResult, {fetchMoreResult}) => {
                 const newEdges = fetchMoreResult.allPlanets.edges;
@@ -30,23 +49,22 @@ const PlanetList = () => {
                         allPlanets: {
                             __typename: previousResult.allPlanets.__typename,
                             edges: [...newEdges],
-                            pageInfo
+                            pageInfo: {...pageInfo, hasPreviousPage: true}
                         }
                     }
                     : previousResult;
             },
-        }).then(() => setPage(page + 1))
+        }).then(() => addPage())
     };
 
     const prevPage = () => {
         fetchMore({
             variables: {
                 last: 10,
-                before: data.allPlanets.pageInfo.startCursor,
+                before: data?.allPlanets.pageInfo.startCursor,
+                first: null,
             },
             updateQuery: (previousResult, {fetchMoreResult}) => {
-                console.log('fetchMoreResult', fetchMoreResult);
-                console.log('previousResult', previousResult);
                 const newEdges = fetchMoreResult.allPlanets.edges;
                 const pageInfo = fetchMoreResult.allPlanets.pageInfo;
 
@@ -55,29 +73,32 @@ const PlanetList = () => {
                         allPlanets: {
                             __typename: previousResult.allPlanets.__typename,
                             edges: [...newEdges],
-                            pageInfo
+                            pageInfo: {...pageInfo, hasNextPage: true}
                         }
                     }
                     : previousResult;
-            }
-        }).then(() => setPage(page - 1)
-        )
+            },
+        }).then(() => substractPage())
     };
 
     return (
-        <div>
-            <h1>Planet Lists</h1>
-            <Pagination data={data} page={page} nextPage={nextPage} prevPage={prevPage} hasNextPage={hasNextPage}
-                        loading={loading}/>
-            {data &&
-            data.allPlanets &&
-            data.allPlanets.edges &&
-            data.allPlanets.edges.map(edge => {
-                return (
-                    <Planet key={edge.planet.id} data={edge.planet}/>
-                )
-            })}
-        </div>
+        <S.Wrapper>
+            <S.ListWrapper>
+                {data?.allPlanets.edges.map(edge => {
+                    return (
+                        <Planet key={edge.planet.id} data={edge.planet}
+                                navigateTo={() => navigateToPlanet(edge.planet.id)}/>
+                    )
+                })}
+            </S.ListWrapper>
+            <Pagination loading={loading}
+                        hasNextPage={data?.allPlanets.pageInfo.hasNextPage}
+                        hasPreviousPage={data?.allPlanets.pageInfo.hasPreviousPage}
+                        page={page}
+                        nextPage={nextPage}
+                        prevPage={prevPage}
+            />
+        </S.Wrapper>
     );
 };
 
