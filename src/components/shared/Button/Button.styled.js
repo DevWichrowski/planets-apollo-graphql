@@ -1,9 +1,16 @@
 import styled from "styled-components";
+import {
+    buttonBackgroundHover,
+    darkGrayColor,
+    headerColor,
+    orangeColor,
+    whiteOpacityColor
+} from "../../../styles/colors";
 
 
 export const Button = styled.button`
-  background-color: ${props => props.next ? 'black' : '#2a2b2b'};
-  color: ${props => props.next ? 'rgba(255,255,255,0.8)' : 'rgba(224,160,16,0.75)'};
+  background-color: ${props => props.next ? 'black' : darkGrayColor};
+  color: ${props => props.next ? headerColor : orangeColor};
   margin: 0 10px;
   border: ${props => props.next ? 'none' : '1px solid black'};
   border-radius: 30px;
@@ -22,8 +29,8 @@ export const Button = styled.button`
   
   
   &:hover {
-    background-color: rgb(79,79,81);
-    color: rgba(225,225,225,0.8);
+    background-color: ${buttonBackgroundHover};
+    color: ${whiteOpacityColor};
     border: none;
     transition: 0.5s;
   }

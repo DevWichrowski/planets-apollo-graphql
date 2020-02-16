@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {headerColor} from "../../../styles/colors";
 
 
 export const InfoElement = styled.div`
@@ -11,7 +12,7 @@ export const InfoHeader = styled.div`
 font-weight: bold;
 margin-bottom: 5px;
 font-size: 16px;
-color: rgba(255, 255, 255, 0.8);
+color: ${headerColor};
 `;
 
 export const InfoData = styled.div`

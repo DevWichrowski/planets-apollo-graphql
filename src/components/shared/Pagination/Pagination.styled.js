@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {darkGrayColor, orangeColor} from "../../../styles/colors";
 
 
 export const Wrapper = styled.div`
@@ -8,7 +9,7 @@ align-items: center;
 height: 5%;
 width: 100%;
 padding: 15px;
-background-color: #2a2b2b;
+background-color: ${darkGrayColor};
 `;
 
 export const Placeholder = styled.button`
@@ -37,7 +38,7 @@ align-items: center;
 font-weight: bold;
 margin: 0 10px;
 height: 30px;
-color: rgba(224,160,16,0.75);
+color: ${orangeColor};
 width: 30px;
 border-radius: 50%;
 font-size: 16px;

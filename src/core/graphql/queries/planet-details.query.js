@@ -19,11 +19,6 @@ query planetDetails($id: ID) {
         characterConnection{
           characters{
             name
-            birthYear
-            gender
-            eyeColor
-            height
-            mass
           }
         }
       }

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {buttonHover} from "../../../../styles/colors";
+import {buttonHover, lightGrayColor} from "../../../../styles/colors";
 
 
 export const Wrapper = styled.div`
@@ -11,8 +11,8 @@ padding: 10px 0;
 font-size: 16px;
 min-height: 260px;
 max-height: 300px;
-background-color: rgba(255, 255, 255, 0.0);
-border: 0.5px solid rgba(255, 255, 255, 0.5);
+background-color: transparent;
+border: 0.5px solid ${lightGrayColor};
 box-shadow: 4px 4px 13px 0px rgba(0,0,0,0.75);
 cursor: pointer;
 transition: all 0.5s;
@@ -31,5 +31,5 @@ padding: 0 15px;
 display: flex;
 flex-direction: column;
 justify-content: flex-start;
-color: rgba(255, 255, 255, 0.6);
+color: ${lightGrayColor};
 `;

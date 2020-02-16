@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {headerColor, lightGrayColor, orangeColor} from "../../styles/colors";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -21,9 +22,9 @@ export const Container = styled.div`
    min-height: 300px;
    border-radius: 5px;
    background-color: transparent;
-   border: 0.5px solid rgba(255, 255, 255, 0.5);
+   border: 0.5px solid ${lightGrayColor};
    margin-bottom: 50px;
-   color: rgba(255, 255, 255, 0.6);
+   color: ${lightGrayColor};
    @media screen and (max-width: 1000px) {
    width: 80%
    }
@@ -38,7 +39,7 @@ grid-template-columns: repeat(4, minmax(23%, 25%));
 grid-template-rows: repeat(2, minmax(40px, 100px)); 
 grid-column-gap: 2%;
 justify-content: flex-start;
-color: rgba(255, 255, 255, 0.6);
+color: ${lightGrayColor};
 
 @media screen and (max-width: 800px) {
 grid-template-columns: repeat(3, minmax(30%, 33%));
@@ -62,11 +63,11 @@ font-weight: bold;
 margin-bottom: 5px;
 font-size: 16px;
 text-align: center;
-color: rgba(255, 255, 255, 0.8);
+color: ${headerColor};
 `;
 
 export const MovieOpening = styled.div`
-color: rgba(224,160,16,0.75);
+color: ${orangeColor};
 font-size: 14px;
 line-height: 3;
 margin-bottom: 20px;
